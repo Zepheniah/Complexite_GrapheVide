@@ -14,10 +14,10 @@ public class Main {
         test.add(4);
         test.add(5);
         test.add(6);
-        if(graph.chechGraphevide(test)) System.out.println("GRAPHE VIDE");
+        if(Algo.CheckGraphevide(graph,test)) System.out.println("GRAPHE VIDE");
         test.add(3);
         test.add(1);
-        if(!graph.chechGraphevide(test)) System.out.println("GRAPHE VIDE PAS VIDE");
+        if(!Algo.CheckGraphevide(graph,test)) System.out.println("GRAPHE VIDE PAS VIDE");
 
 
     }

@@ -45,19 +45,5 @@ public class Graph {
         adj.get(destination).remove(source);
     }
 
-    boolean chechGraphevide(List<Integer> sous_graphe){
-        if(sous_graphe.size() == Nb_sommet && !adj.isEmpty()){
-            return false;
-        }
-        for(int i : sous_graphe){
-            for(int j : sous_graphe){
-                if (adj.get(i) == null)break;
-                if(i != j && adj.get(i).contains(j)) return false;
-                }
-            }
-
-        return true;
-    }
-
 
 }
