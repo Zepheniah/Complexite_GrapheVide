@@ -43,7 +43,7 @@ public class Main {
         if(Algo.CheckGraphevide(graph,test3)) System.out.println("GRAPHE VIDE");
         System.out.println("Graphe Maximum"+test3);
         System.out.println("--------------------------------------------------------------");
-        System.out.println("Question 4");
+        System.out.println("QUESTION 4");
         List<Integer> test4 = Algo.VideMaximalHeuristic(graph);
         if(Algo.CheckGraphevide(graph,test4)) System.out.println("GRAPHE VIDE");
         System.out.println(test4);
