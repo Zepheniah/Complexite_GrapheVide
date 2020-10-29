@@ -1,24 +1,27 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
 
     private int Nb_sommet;
-    private HashMap<Integer,HashSet<Integer>> adj;
+    private HashMap<Integer,List<Integer>> adj;
 
 
     public Graph(int Nb_sommet){
         this.Nb_sommet = Nb_sommet;
         adj = new HashMap<>();
     }
+
+    public Graph(int Nb_sommet,HashMap<Integer,List<Integer>> adj){
+        this.Nb_sommet = Nb_sommet;
+        this.adj = (HashMap<Integer,List<Integer>>)adj.clone();
+    }
     public int getNb_sommet() {
         return Nb_sommet;
     }
-    public HashMap<Integer, HashSet<Integer>> getAdj() {
+    public HashMap<Integer, List<Integer>> getAdj() {
         return adj;
     }
+
 
     void addArc(int source, int destination){
         if(source >= Nb_sommet || source < 0 || destination >= Nb_sommet || destination < 0){
@@ -30,10 +33,10 @@ public class Graph {
             return;
         }
         if(adj.get(source) == null){
-            adj.put(source,new HashSet<Integer>());
+            adj.put(source,new ArrayList<Integer>());
         }
         if(adj.get(destination) == null){
-            adj.put(destination,new HashSet<Integer>());
+            adj.put(destination,new ArrayList<Integer>());
         }
         adj.get(source).add(destination);
         adj.get(destination).add(source);
@@ -41,9 +44,17 @@ public class Graph {
     }
 
     void removeArc(int source,int destination){
-        adj.get(source).remove(destination);
-        adj.get(destination).remove(source);
+        if(!adj.get(source).contains(destination) || !adj.get(destination).contains(source))return;
+        adj.get(source).remove((Object)destination);
+        adj.get(destination).remove((Object)source);
     }
 
+    public int nb_arc(){
+        int nb = 0;
+        for(int i = 0; i<adj.size();i++){
+            nb += adj.get(i).size();
+        }
+        return nb;
+    }
 
 }
