@@ -60,8 +60,11 @@ public class Algo {
 
     }
 
+    /**
+     *J'estime que dans le pire des cas le tri effectué au début de fonction soit en O(n²), le parcours s'effectue dans le pire des cas en O(n²)
+     * Je pense que dans le pire des cas O(2n²) soit complexité quadratique
+     */
 
-    /*
     static List<Integer> VideMaximalHeuristic(Graph graph){
        Map<Integer,List<Integer>> sorted = graph.getAdj().entrySet().stream()
                .sorted(comparingInt(e -> e.getValue().size()))
@@ -71,11 +74,17 @@ public class Algo {
                         (a, b) -> { throw new AssertionError(); },
                 LinkedHashMap::new
         ));
-        ArrayList<Integer> min_degre = (ArrayList<Integer>) sorted.keySet();
-        for(Integer i : min_degre){
-
+        ArrayList<Integer> result = new ArrayList<>();
+        ArrayList<Integer> min_degre = new ArrayList<>(sorted.keySet());
+        while (!min_degre.isEmpty()){
+            int i = min_degre.iterator().next();
+            for(Integer voisin : graph.getAdj().get(i)){
+               if(min_degre.indexOf(voisin)>=0) min_degre.remove(min_degre.indexOf(voisin));
+            }
+            result.add(i);
+            min_degre.remove(min_degre.indexOf(i));
         }
+        return result;
     }
-    */
 
 }
