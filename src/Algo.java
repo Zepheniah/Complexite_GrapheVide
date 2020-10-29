@@ -61,7 +61,8 @@ public class Algo {
     }
 
     /**
-     *J'estime que dans le pire des cas le tri effectué au début de fonction soit en O(n²), le parcours s'effectue dans le pire des cas en O(n²)
+     *J'estime que dans le pire des cas le tri effectué au début de fonction soit en O(n²)(ne connaissant pas la complexité exacte des fonction java)
+     * , le parcours s'effectue dans le pire des cas en O(n²)
      * Je pense que dans le pire des cas O(2n²) soit complexité quadratique
      */
 
