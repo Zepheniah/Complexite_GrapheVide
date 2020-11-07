@@ -4,11 +4,11 @@ import static java.util.stream.Collectors.toMap;
 
 public class Algo {
     /**
-     *Les fonctions java ne communiquant pas leur complexité, j'estime O(n²)
+     *Les fonctions java ne communiquant pas leur complexité, j'estime O(n^3),du à la fonction contains de la classe List
      */
     static boolean CheckGraphevide(Graph graph,List<Integer> sous_graphe){
-        if(sous_graphe.size() == graph.getNb_sommet() && !graph.getAdj().isEmpty()){
-            return false;
+        if(sous_graphe.size() == graph.getNb_sommet() && !graph.getAdj().isEmpty()){ // Si le sous graphe fait la meme taille que le graphe et que le graphe d'adjacence n'est pas
+            return false;                                                            // n'est pas vide alors le graphe est forcement pas vide
         }
         for(int i : sous_graphe){
             for(int j : sous_graphe){
@@ -21,7 +21,7 @@ public class Algo {
 
     /**
      * Algorithme trouvé https://en.wikipedia.org/wiki/Maximal_independent_set#Listing_all_maximal_independent_sets
-     * Complexité en O(m) avec m étant le nombre d'arc
+     * Complexité en O(m) avec m étant le nombre d'arc théoriquement,point vue pratique consulté Compte rendu
      */
     static List<Integer> VideMaximal(Graph graph){
         ArrayList<Integer> temp = new ArrayList<>(graph.getAdj().keySet());
@@ -38,8 +38,8 @@ public class Algo {
     }
 
     /**
-     *Les fonctions java ne communiquant pas leur complexité, j'estime o(n^4) , n² pour le parcours mais à chaque parcours je lance CheckGraphevide qui
-     * est lui meme n² , par imbrication O(n^4)
+     *Les fonctions java ne communiquant pas leur complexité, j'estime o(n^5) , n² pour le parcours mais à chaque parcours je lance CheckGraphevide qui
+     * est lui meme n^3 , par imbrication O(n^5)
      */
     static List<Integer> VideMaximum(Graph graph){
         List<Integer> result = new ArrayList<>(); // Liste qui sera retourner en fin d'algo
@@ -62,8 +62,8 @@ public class Algo {
 
     /**
      *J'estime que dans le pire des cas le tri effectué au début de fonction soit en O(n²)(ne connaissant pas la complexité exacte des fonction java)
-     * , le parcours s'effectue dans le pire des cas en O(n²)
-     * Je pense que dans le pire des cas O(2n²) soit complexité quadratique
+     * , le parcours est similaire à VideMaximal()
+     * Je pense que dans le pire des cas O(n²) soit complexité quadratique
      */
 
     static List<Integer> VideMaximalHeuristic(Graph graph){
